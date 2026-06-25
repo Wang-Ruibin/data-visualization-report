@@ -5,8 +5,9 @@ from docx.oxml.ns import qn
 import os
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-IMG_DIR = os.path.join(BASE_DIR, "report", "images")
-REPORT_DIR = os.path.join(BASE_DIR, "report")
+SUBMIT_DIR = os.path.join(BASE_DIR, "数据源码")
+IMG_DIR = os.path.join(SUBMIT_DIR, "report", "images")
+REPORT_DIR = os.path.join(SUBMIT_DIR, "report")
 os.makedirs(REPORT_DIR, exist_ok=True)
 
 doc = Document()
@@ -95,8 +96,8 @@ for _ in range(5):
 info_items = [
     ("学    院", "商学院"),
     ("专    业", "信息管理与信息系统"),
-    ("学    号", "2308080119"),
-    ("姓    名", "王睿彬"),
+    ("学    号", "XXXXXXXXXX"),
+    ("姓    名", "[匿名]"),
     ("课    程", "数据可视化技术"),
     ("学    期", "2025–2026学年第二学期"),
 ]
@@ -433,7 +434,7 @@ for ref in refs:
     set_font(run, FONT_BODY, Pt(11))
 
 if __name__ == "__main__":
-    out_path = "/tmp/2308080119+王睿彬+数据源码.docx"
+    out_path = "/tmp/data-visualization-report.docx"
     doc.save(out_path)
     print(f"Report saved to: {out_path}")
     # NOTE: Windows mount lock prevents direct save to report/ dir.
