@@ -46,7 +46,7 @@ def make_chart1():
             min_=0,
             max_=100,
             position="right",
-            axisline_opts=opts.AxisLineOpts(linestyle_opts=opts.LineStyleOpts(color="#91CC75")),
+            axisline_opts=opts.AxisLineOpts(linestyle_opts=opts.LineStyleOpts(is_show=True, color="#91CC75")),
             axislabel_opts=opts.LabelOpts(formatter="{value}%"),
         )
     )
@@ -65,7 +65,7 @@ def make_chart1():
         "互联网普及率（%）", penetration,
         yaxis_index=1,
         label_opts=opts.LabelOpts(is_show=True, formatter="{c}%"),
-        linestyle_opts=opts.LineStyleOpts(width=3, color="#91CC75"),
+        linestyle_opts=opts.LineStyleOpts(is_show=True, width=3, color="#91CC75"),
         itemstyle_opts=opts.ItemStyleOpts(color="#91CC75"),
         areastyle_opts=opts.AreaStyleOpts(opacity=0.15, color="#91CC75"),
     )
@@ -83,7 +83,7 @@ def make_chart2():
     line.add_yaxis(
         "手机网民规模（亿）", mobile_users,
         label_opts=opts.LabelOpts(is_show=True, formatter="{c}亿"),
-        linestyle_opts=opts.LineStyleOpts(width=3, color="#5470C6"),
+        linestyle_opts=opts.LineStyleOpts(is_show=True, width=3, color="#5470C6"),
         symbol="circle",
         symbol_size=10,
         areastyle_opts=opts.AreaStyleOpts(opacity=0.2, color="#5470C6"),
@@ -92,7 +92,7 @@ def make_chart2():
         "手机网民占比（%）", mobile_pct,
         yaxis_index=1,
         label_opts=opts.LabelOpts(is_show=True, formatter="{c}%"),
-        linestyle_opts=opts.LineStyleOpts(width=3, color="#EE6666", type_="dashed"),
+        linestyle_opts=opts.LineStyleOpts(is_show=True, width=3, color="#EE6666", type_="dashed"),
         symbol="diamond",
         symbol_size=10,
     )
@@ -103,7 +103,7 @@ def make_chart2():
             min_=60,
             max_=100,
             position="right",
-            axisline_opts=opts.AxisLineOpts(linestyle_opts=opts.LineStyleOpts(color="#EE6666")),
+            axisline_opts=opts.AxisLineOpts(linestyle_opts=opts.LineStyleOpts(is_show=True, color="#EE6666")),
             axislabel_opts=opts.LabelOpts(formatter="{value}%"),
         )
     )
