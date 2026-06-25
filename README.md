@@ -14,20 +14,20 @@
 | ![chart6](https://img.shields.io/badge/Chart-6-teal) | IPv4/IPv6 地址资源变化（分组柱状图） |
 | ![chart7](https://img.shields.io/badge/Chart-7-cyan) | 城乡互联网普及率对比（分组柱状图） |
 
-> 所有图表可在 `code/visualization.html` 中交互查看（悬浮、缩放、图例筛选）。
+> 所有图表可在 `2308080119+王睿彬+数据源码/code/visualization.html` 中交互查看（悬浮、缩放、图例筛选）。
 
 ## 🚀 快速开始
 
 ```bash
 # 1. 克隆仓库
-git clone https://github.com/2308080119/data-visualization-report.git
+git clone https://github.com/Wang-Ruibin/data-visualization-report.git
 cd data-visualization-report
 
 # 2. 安装依赖
-pip install pyecharts pandas
+pip install pyecharts pandas matplotlib python-docx
 
 # 3. 运行可视化脚本
-cd code
+cd "2308080119+王睿彬+数据源码/code"
 python3 visualization.py
 ```
 
@@ -37,17 +37,23 @@ python3 visualization.py
 
 ```
 .
-├── data/              # 原始数据集（CSV）
-│   ├── internet_users.csv    # 网民规模与普及率
-│   ├── age_structure.csv     # 年龄结构
-│   ├── education_structure.csv # 学历结构
-│   ├── app_users.csv         # 应用用户规模
-│   ├── urban_rural.csv       # 城乡普及率
-│   └── ip_addresses.csv      # IP地址资源
-├── code/              # 可视化源码
-│   ├── visualization.py     # PyECharts 绘图脚本
-│   └── visualization.html   # 生成的交互式图表
-├── report/            # 课程报告（Word）
+├── 2308080119+王睿彬+数据源码/  # 课程作业主目录
+│   ├── data/              # 原始数据集（CSV）
+│   │   ├── internet_users.csv    # 网民规模与普及率
+│   │   ├── age_structure.csv     # 年龄结构
+│   │   ├── education_structure.csv # 学历结构
+│   │   ├── app_users.csv         # 应用用户规模
+│   │   ├── urban_rural.csv       # 城乡普及率
+│   │   └── ip_addresses.csv      # IP地址资源
+│   ├── code/              # 可视化源码
+│   │   ├── visualization.py     # PyECharts 绘图脚本
+│   │   ├── visualization.html   # 生成的交互式图表
+│   │   ├── chart_images.py      # 报告用静态图表生成
+│   │   └── generate_report.py   # Word 报告生成脚本
+│   └── report/            # 课程报告（Word）
+│       ├── images/             # 图表图片
+│       └── 2308080119+王睿彬+数据源码.docx
+├── 数据可视化技术任务指导书 (2026年春季学期).docx
 └── README.md
 ```
 

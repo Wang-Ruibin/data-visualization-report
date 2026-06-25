@@ -100,14 +100,66 @@ info_items = [
     ("课    程", "数据可视化技术"),
     ("学    期", "2025–2026学年第二学期"),
 ]
-for label, value in info_items:
-    p = doc.add_paragraph()
-    p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p.paragraph_format.first_line_indent = Cm(0)
-    run = p.add_run(f"{label}：{value}")
-    run.font.size = Pt(15)
-    run.font.name = FONT_BODY
-    run.element.rPr.rFonts.set(qn('w:eastAsia'), FONT_BODY)
+
+from docx.shared import Emu
+from docx.oxml import OxmlElement
+from docx.enum.table import WD_TABLE_ALIGNMENT
+from docx.oxml.ns import nsdecls
+
+table = doc.add_table(rows=6, cols=2)
+table.alignment = WD_TABLE_ALIGNMENT.CENTER
+for row_idx, (label, value) in enumerate(info_items):
+    row = table.rows[row_idx]
+    row.height = Cm(1.2)
+
+    cell0 = row.cells[0]
+    cell0.width = Cm(4)
+    cell0.paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.RIGHT
+    cell0.paragraphs[0].paragraph_format.first_line_indent = Cm(0)
+    cell0.paragraphs[0].paragraph_format.space_before = Pt(0)
+    cell0.paragraphs[0].paragraph_format.space_after = Pt(0)
+    run0 = cell0.paragraphs[0].add_run(f"{label}：")
+    run0.font.size = Pt(15)
+    run0.font.name = FONT_BODY
+    run0.element.rPr.rFonts.set(qn('w:eastAsia'), FONT_BODY)
+
+    cell1 = row.cells[1]
+    cell1.width = Cm(8)
+    cell1.paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.CENTER
+    cell1.paragraphs[0].paragraph_format.first_line_indent = Cm(0)
+    cell1.paragraphs[0].paragraph_format.space_before = Pt(0)
+    cell1.paragraphs[0].paragraph_format.space_after = Pt(0)
+    run1 = cell1.paragraphs[0].add_run(value)
+    run1.font.size = Pt(15)
+    run1.font.name = FONT_BODY
+    run1.element.rPr.rFonts.set(qn('w:eastAsia'), FONT_BODY)
+
+    tc = cell1._tc
+    tcPr = tc.get_or_add_tcPr()
+    tcBorders = OxmlElement('w:tcBorders')
+    bottom = OxmlElement('w:bottom')
+    bottom.set(qn('w:val'), 'single')
+    bottom.set(qn('w:sz'), '12')
+    bottom.set(qn('w:space'), '1')
+    bottom.set(qn('w:color'), '000000')
+    tcBorders.append(bottom)
+    tcPr.append(tcBorders)
+
+for row in table.rows:
+    for cell in row.cells:
+        tc = cell._tc
+        tcPr = tc.get_or_add_tcPr()
+        tcBorders = tcPr.find(qn('w:tcBorders'))
+        if tcBorders is None:
+            tcBorders = OxmlElement('w:tcBorders')
+        for side in ['top', 'left', 'right']:
+            border = OxmlElement(f'w:{side}')
+            border.set(qn('w:val'), 'none')
+            border.set(qn('w:sz'), '0')
+            border.set(qn('w:space'), '0')
+            border.set(qn('w:color'), 'auto')
+            tcBorders.append(border)
+        tcPr.append(tcBorders)
 
 doc.add_page_break()
 
