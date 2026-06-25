@@ -5,6 +5,8 @@ from pyecharts.globals import ThemeType, CurrentConfig
 from pyecharts.commons.utils import JsCode
 import os
 
+CurrentConfig.ONLINE_HOST = "https://cdn.bootcdn.net/ajax/libs/echarts/5.5.0/"
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "..", "data")
 OUT_DIR = BASE_DIR
@@ -26,7 +28,7 @@ mobile_pct = df_users["手机网民占比_百分比"].tolist()
 def make_chart1():
     bar = Bar(init_opts=opts.InitOpts(
         width="1200px", height="600px",
-        theme=ThemeType.WESTEROS,
+        theme=ThemeType.LIGHT,
         chart_id="chart1"
     ))
     bar.add_xaxis(years)
@@ -74,7 +76,7 @@ def make_chart1():
 def make_chart2():
     line = Line(init_opts=opts.InitOpts(
         width="1200px", height="600px",
-        theme=ThemeType.WESTEROS,
+        theme=ThemeType.LIGHT,
         chart_id="chart2"
     ))
     line.add_xaxis(years)
@@ -120,7 +122,7 @@ def make_chart3():
     age_groups = list(df_age.columns[1:])
     bar = Bar(init_opts=opts.InitOpts(
         width="1200px", height="600px",
-        theme=ThemeType.WESTEROS,
+        theme=ThemeType.LIGHT,
         chart_id="chart3"
     ))
     bar.add_xaxis(df_age["年份"].astype(str).tolist())
@@ -161,7 +163,7 @@ def make_chart4():
     last_row = df_edu.iloc[-1]
     pie = Pie(init_opts=opts.InitOpts(
         width="1200px", height="600px",
-        theme=ThemeType.WESTEROS,
+        theme=ThemeType.LIGHT,
         chart_id="chart4"
     ))
     data_pairs = [(group, last_row[group]) for group in edu_groups]
@@ -201,7 +203,7 @@ def make_chart5():
     df_sorted = df_app.sort_values("用户规模_亿", ascending=True)
     bar = Bar(init_opts=opts.InitOpts(
         width="1200px", height="600px",
-        theme=ThemeType.WESTEROS,
+        theme=ThemeType.LIGHT,
         chart_id="chart5"
     ))
     bar.add_xaxis(df_sorted["应用类别"].tolist())
@@ -233,7 +235,7 @@ def make_chart5():
 def make_chart6():
     bar = Bar(init_opts=opts.InitOpts(
         width="1200px", height="600px",
-        theme=ThemeType.WESTEROS,
+        theme=ThemeType.LIGHT,
         chart_id="chart6"
     ))
     bar.add_xaxis(df_ip["年份"].astype(str).tolist())
@@ -261,7 +263,7 @@ def make_chart6():
 def make_chart7():
     bar = Bar(init_opts=opts.InitOpts(
         width="1200px", height="600px",
-        theme=ThemeType.WESTEROS,
+        theme=ThemeType.LIGHT,
         chart_id="chart7"
     ))
     bar.add_xaxis(df_ur["年份"].astype(str).tolist())
